@@ -64,7 +64,7 @@ nativeCSS.prototype.transform = function (css) {
 }
 
 nativeCSS.prototype.convert = function (css) {
-  return self.transform(cssParser.parse(css, {
+  return this.transform(cssParser.parse(css, {
     silent: false,
     source: ''
   }));
