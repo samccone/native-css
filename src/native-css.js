@@ -122,13 +122,16 @@ nativeCSS.prototype.convert = function(cssFile) {
   var self = this,
     path = process.cwd() + '/' + cssFile,
     css;
+  var pathExists = false;
+
   // PATH given
   try {
-    if ((require('fs').existsSync(path))) {
-      css = lib.readFile(path);
-    }
+    pathExists = require('fs').existsSync(path);
   } catch (e) {
     // carry on since this can error if it tries to existsSync on a dir
+  }
+  if (pathExists) {
+    css = lib.readFile(path);
   }
   // STRING given
   else if (typeof cssFile === 'string') {
